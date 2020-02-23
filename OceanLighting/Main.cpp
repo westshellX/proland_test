@@ -9,9 +9,9 @@ using namespace std;
 #define M_PI 3.14159265
 #endif
 
-#include "glew.h"
-#include "glut.h"
-#include "AntTweakBar.h"
+#include <gl/glew.h>
+#include <gl/glut.h>
+#include <AntTweakBar.h>
 
 #include "vec4.h"
 #include "mat4.h"

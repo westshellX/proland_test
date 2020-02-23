@@ -23,15 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AntTweakBar.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glew.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="glut.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="mat4.h">
       <Filter>头文件</Filter>
     </ClInclude>

@@ -91,11 +91,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\westshell_ASUS\Documents\vcpkg\installed\x86-windows\include;C:\Users\westshell_ASUS\Documents\Visual Studio 2017\Projects\AntTweakBar_116\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>AntTweakBar.lib;glew32.lib;glut32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>AntTweakBar.lib;glew32.lib;freeglut.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\westshell_ASUS\Documents\vcpkg\installed\x86-windows\lib;C:\Users\westshell_ASUS\Documents\Visual Studio 2017\Projects\AntTweakBar_116\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,9 +159,6 @@
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AntTweakBar.h" />
-    <ClInclude Include="glew.h" />
-    <ClInclude Include="glut.h" />
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="vec4.h" />

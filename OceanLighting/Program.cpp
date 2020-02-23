@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <cassert>
-#include "glew.h"
+#include <gl/glew.h>
 
 #include "Program.h"
 
