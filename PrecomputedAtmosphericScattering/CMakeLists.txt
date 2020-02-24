@@ -4,8 +4,9 @@ SET(PROJECTNAME PrecomputedAtmosphericScattering)
 INCLUDE_DIRECTORIES(
    ${HEADER_PATH}
    ${anttweakbar_INCLUDE_DIR}
+   ${tiff_INCLUDE_DIR}
 )
-
+link_directories(${glew_LIBRARY_PATH} ${glut_LIBRARY_PATH} ${TIFF_LIBRARY_PATH})
 # Adds headers to the "Header Files" group in visual studio
 SOURCE_GROUP( "Header Files" ${HEADER_PATH}/*.h )
 
@@ -14,13 +15,10 @@ ADD_EXECUTABLE(
   Main.cpp
 )
 target_link_libraries(
-    ${PROJECTNAME} 
-	
-	debug ${anttweakbar_LIBRARY}
-	optimized ${anttweakbar_LIBRARY}
-	
+    ${PROJECTNAME} 	
 	${glew_LIBRARY}
-	${glut_LIBRARY}
+	${GLUT_LIBRARY}
+	${TIFF_LIBRARY}
 )
 install(
     TARGETS ${PROJECTNAME}

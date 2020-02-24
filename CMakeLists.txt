@@ -12,7 +12,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 endif(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
 
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 SET(CMAKE_USE_RELATIVE_PATHS true)
 set(CMAKE_DEBUG_POSTFIX d)
@@ -24,16 +24,17 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/CMakeModules")
 find_package(glew REQUIRED)
 INCLUDE_DIRECTORIES(${glew_INCLUDE_DIR})
 
-find_package(glut)
-INCLUDE_DIRECTORIES(${glut_INCLUDE_DIR})
+find_package(GLUT)
+INCLUDE_DIRECTORIES(${GLUT_INCLUDE_DIR})
 
 find_package(OpenGL)
 find_package(anttweakbar)
 include_directories(${anttweakbar_INCLUDE_DIR})
 
+find_package(TIFF)
+
 # Sub dirs
 add_subdirectory(OceanLighting)
 add_subdirectory(OceanLightingFFT)
 add_subdirectory(PrecomputedAtmosphericScattering)
-
 

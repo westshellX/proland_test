@@ -17,16 +17,12 @@ ADD_EXECUTABLE(
 target_link_libraries(
     ${PROJECTNAME} 
 	
-	debug ${anttweakbar_LIBRARY}
-	optimized ${anttweakbar_LIBRARY}
+	${anttweakbar_LIBRARY}
 	
 	${glew_LIBRARY}
-	${glut_LIBRARY}
+	${GLUT_LIBRARY}
 )
-install(
-    TARGETS ${PROJECTNAME}
-	RUNTIME DESTINATION ${EXECUTABLE_OUTPUT_PATH}
-)
+
 
 
 
