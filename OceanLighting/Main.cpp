@@ -86,6 +86,7 @@ float sunPhi = 0.0;
 float cameraHeight = 6.0;
 
 float cameraTheta = 0.0;
+float cameraThetaY = 0.0;
 
 // RENDERING OPTIONS
 
@@ -613,7 +614,7 @@ void redisplayFunc()
         0.0, 0.0, 0.0, 1.0
     );
     view = mat4f::rotatex(cameraTheta / M_PI * 180.0) * view;
-
+	view = mat4f::rotatey(cameraThetaY / M_PI * 180.0)*view;
     mat4f proj = mat4f::perspectiveProjection(90.0, float(width) / float(height), 0.1 * ch, 1000000.0 * ch);
 
     float worldToWind[4];
@@ -714,7 +715,14 @@ void keyboardFunc(unsigned char c, int x, int y)
     } else if (c >= '1' && c <= '9') {
         save(c - '0');
     }
-
+	else if (c == 'a' || c == 'A')
+	{
+		cameraThetaY = cameraThetaY + 5.0 / 180 * M_PI;
+	}
+	else if (c == 'd' || c == 'D')
+	{
+		cameraThetaY = cameraThetaY -5.0 / 180 * M_PI;
+	}
 	TwEventKeyboardGLUT(c, x, y);
 }
 
