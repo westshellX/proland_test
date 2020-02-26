@@ -406,44 +406,47 @@ void generateMesh()
     float hmargin = 0.1;
 
     vboParams = vec4f(width, height, gridSize, cameraTheta);
-    vec4f *data = new vec4f[int(ceil(height * (s + vmargin) / gridSize) + 5) * int(ceil(width * (1.0 + 2.0 * hmargin) / gridSize) + 5)];
+	if (s + vmargin > 0)
+	{
+		vec4f *data = new vec4f[int(ceil(height * (s + vmargin) / gridSize) + 5) * int(ceil(width * (1.0 + 2.0 * hmargin) / gridSize) + 5)];
 
-    int n = 0;
-    int nx = 0;
-    for (float j = height * s - 0.1; j > -height * vmargin - gridSize; j -= gridSize) {
-        nx = 0;
-        for (float i = -width * hmargin; i < width * (1.0 + hmargin) + gridSize; i += gridSize) {
-            data[n++] = vec4f(-1.0 + 2.0 * i / width, -1.0 + 2.0 * j / height, 0.0, 1.0);
-            nx++;
-        }
-    }
+		int n = 0;
+		int nx = 0;
+		for (float j = height * s - 0.1; j > -height * vmargin - gridSize; j -= gridSize) {
+			nx = 0;
+			for (float i = -width * hmargin; i < width * (1.0 + hmargin) + gridSize; i += gridSize) {
+				data[n++] = vec4f(-1.0 + 2.0 * i / width, -1.0 + 2.0 * j / height, 0.0, 1.0);
+				nx++;
+			}
+		}
 
-    glBufferData(GL_ARRAY_BUFFER, n * 16, data, GL_STATIC_DRAW);
-    delete[] data;
+		glBufferData(GL_ARRAY_BUFFER, n * 16, data, GL_STATIC_DRAW);
+		delete[] data;
 
-    glGenBuffers(1, &vboIndices);
-    glBindBuffer(GL_ARRAY_BUFFER, vboIndices);
+		glGenBuffers(1, &vboIndices);
+		glBindBuffer(GL_ARRAY_BUFFER, vboIndices);
 
-    vboSize = 0;
-    GLuint *indices = new GLuint[6 * int(ceil(height * (s + vmargin) / gridSize) + 4) * int(ceil(width * (1.0 + 2.0 * hmargin) / gridSize) + 4)];
+		vboSize = 0;
+		GLuint *indices = new GLuint[6 * int(ceil(height * (s + vmargin) / gridSize) + 4) * int(ceil(width * (1.0 + 2.0 * hmargin) / gridSize) + 4)];
 
-    int nj = 0;
-    for (float j = height * s - 0.1; j > -height * vmargin; j -= gridSize) {
-        int ni = 0;
-        for (float i = -width * hmargin; i < width * (1.0 + hmargin); i += gridSize) {
-            indices[vboSize++] = ni + (nj + 1) * nx;
-            indices[vboSize++] = (ni + 1) + (nj + 1) * nx;
-            indices[vboSize++] = (ni + 1) + nj * nx;
-            indices[vboSize++] = (ni + 1) + nj * nx;
-            indices[vboSize++] = ni + (nj + 1) * nx;
-            indices[vboSize++] = ni + nj * nx;
-            ni++;
-        }
-        nj++;
-    }
+		int nj = 0;
+		for (float j = height * s - 0.1; j > -height * vmargin; j -= gridSize) {
+			int ni = 0;
+			for (float i = -width * hmargin; i < width * (1.0 + hmargin); i += gridSize) {
+				indices[vboSize++] = ni + (nj + 1) * nx;
+				indices[vboSize++] = (ni + 1) + (nj + 1) * nx;
+				indices[vboSize++] = (ni + 1) + nj * nx;
+				indices[vboSize++] = (ni + 1) + nj * nx;
+				indices[vboSize++] = ni + (nj + 1) * nx;
+				indices[vboSize++] = ni + nj * nx;
+				ni++;
+			}
+			nj++;
+		}
 
-    glBufferData(GL_ARRAY_BUFFER, vboSize * 4, indices, GL_STATIC_DRAW);
-    delete[] indices;
+		glBufferData(GL_ARRAY_BUFFER, vboSize * 4, indices, GL_STATIC_DRAW);
+		delete[] indices;
+	}
 }
 
 // ----------------------------------------------------------------------------
